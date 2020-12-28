@@ -74,7 +74,7 @@ clone_repo(){
         rm "$TMP_FILE"
         echo 'error: 获取最新V2Ray版本号失败。请重试'
         exit 1
-    fi
+    if
     RELEASE_LATEST="$(sed 'y/,/\n/' "$TMP_FILE" | grep 'tag_name' | awk -F '"' '{print $4}')"
     rm "$TMP_FILE"
     echo "当前最新V2Ray版本为$RELEASE_LATEST"
@@ -83,7 +83,7 @@ clone_repo(){
     if ! curl -L -H 'Cache-Control: no-cache' -o "latest-v2ray.zip" "$DOWNLOAD_LINK"; then
         echo 'error: 下载V2Ray失败，请重试'
         return 1
-    fi
+    if
     unzip latest-v2ray.zip v2ray v2ctl geoip.dat geosite.dat
     rm latest-v2ray.zip
     
